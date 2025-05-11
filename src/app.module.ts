@@ -3,21 +3,21 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 // Modules
-import { UsersModule } from './users/users.module';
-import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 // Entities
-import { User } from './users/entities/user.entity';
-import { Category } from './categories/entities/category.entity';
-import { Product } from './products/entities/product.entity';
+import { User } from './modules/users/entities/user.entity';
+import { Category } from './modules/categories/entities/category.entity';
+import { Product } from './modules/products/entities/product.entity';
 
 // Services
 import { AppService } from './app.service';
 
 // Controllers
 import { AppController } from './app.controller';
-import { ProductsModule } from './products/products.module';
-import { CategoriesModule } from './categories/categories.module';
+import { ProductsModule } from './modules/products/products.module';
+import { CategoriesModule } from './modules/categories/categories.module';
 
 @Module({
   imports: [
