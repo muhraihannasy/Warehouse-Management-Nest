@@ -14,6 +14,9 @@ import { AppService } from './app.service';
 
 // Controllers
 import { AppController } from './app.controller';
+import { ProductsModule } from './products/products.module';
+import { CategoriesModule } from './categories/categories.module';
+import { Category } from './categories/entities/category.entity';
 
 @Module({
   imports: [
@@ -33,13 +36,15 @@ import { AppController } from './app.controller';
         username: configService.get('DB_USERNAME', 'postgres'),
         password: configService.get('DB_PASSWORD', 'postgres'),
         database: configService.get('DB_DATABASE', 'auth_db'),
-        entities: [User],
+        entities: [User, Category],
         synchronize: configService.get<boolean>('DB_SYNCHRONIZE', false),
       }),
     }),
     // App Modules
     UsersModule,
     AuthModule,
+    ProductsModule,
+    CategoriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
