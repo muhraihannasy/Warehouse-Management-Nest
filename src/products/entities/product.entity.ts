@@ -1,8 +1,11 @@
+import { Category } from 'src/categories/entities/category.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -15,17 +18,18 @@ export class Product {
   @Column({ length: 100 })
   name: string;
 
-  @Column()
+  @Column({ nullable: true })
   thumbnail: string;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: true })
   about: string;
 
   @Column({ type: 'bigint' })
   price: number;
 
-  @Column({ type: 'uuid' })
-  category_id: string;
+  @ManyToOne(() => Category, (category) => category.products)
+  @JoinColumn({ name: 'category_id' })
+  category: Category;
 
   @Column({ default: false })
   is_popular: boolean;
